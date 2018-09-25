@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title ToDo App
+    link(rel='stylesheet', href='../asset/css/style.css')
+  body
+    #app
+      section.todo-wrapper
+        h1.todo-title
+          | Friday
+          br
+          | 09-21-2018
+        form
+          input.input-todo(type='text', placeholder='Take the garbage out')
+          .btn.btn-add +
+        div(v-if='pending.length > 0')
+          p.status.busy
+            | You have 3 pending item
+            span s
+          transition-group.todo-list(name='todo-item', tag='ul')
+            li
+              input.todo-checkbox(type='checkbox')
+              label#2
+              span.todo-text {{ item.title }}
+              span.delete
+        transition(name='slide-fade')
+          p.status.free
+            img(src='https://nourabusoud.github.io/vue-todo-list/images/beer_celebration.svg', alt='celebration')
+            | Time to chill!  You have no todos.
+        div
+          p.status Completed tasks: 25%
+          transition-group.todo-list.archived(name='todo-item', tag='ul')
+            li
+              input.todo-checkbox(type='checkbox')
+              label#0
+              span.todo-text {{ item.title }}
+              span.delete
+        .control-buttons
+          .btn.btn-secondary(v-if='completed.length > 0')
+            span Show
+            span Hide
+            |  Complete
+          .btn.btn-secondary(v-if='todoList.length > 0') Clear All
+    footer
+      | View on Project Node.js ToDo App List
+      br
+      |      Made with webprojem.xyz
+    script(type='text/text/javascript', src='../asset/js/jquery.js')
+    script(type='text/text/javascript', src='../asset/js/define.js')
